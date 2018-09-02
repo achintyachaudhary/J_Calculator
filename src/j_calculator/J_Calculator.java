@@ -107,7 +107,7 @@ public class J_Calculator implements ActionListener {
         frame.add(equal);
     }
     private String string_build="";
-    boolean operator=false;
+    static boolean operator=false;
     @Override 
     public void actionPerformed(ActionEvent event){
        if(event.getSource().equals(one)){
@@ -165,9 +165,9 @@ public class J_Calculator implements ActionListener {
                string_build+=" + ";
                displaypanel.setText(string_build);
            }else{
-               int lastindex=string_build.length()-1;
+               int lastindex=string_build.length()-2;
                string_build=string_build.substring(0,lastindex);
-               string_build+="+";
+               string_build+="+ ";
                displaypanel.setText(string_build);
            }
            operator=true;
@@ -177,9 +177,9 @@ public class J_Calculator implements ActionListener {
                string_build+=" - ";
                displaypanel.setText(string_build);
            }else{
-               int lastindex=string_build.length()-1;
+               int lastindex=string_build.length()-2;
                string_build=string_build.substring(0,lastindex);
-               string_build+="-";
+               string_build+="- ";
                displaypanel.setText(string_build);
            }
            operator=true;
@@ -189,9 +189,9 @@ public class J_Calculator implements ActionListener {
                string_build+=" / ";
                displaypanel.setText(string_build);
            }else{
-               int lastindex=string_build.length()-1;
+               int lastindex=string_build.length()-2;
                string_build=string_build.substring(0,lastindex);
-               string_build+="/";
+               string_build+="/ ";
                displaypanel.setText(string_build);
            }
            operator=true;
@@ -201,9 +201,9 @@ public class J_Calculator implements ActionListener {
                string_build+=" * ";
                displaypanel.setText(string_build);
            }else{
-               int lastindex=string_build.length()-1;
+               int lastindex=string_build.length()-2;
                string_build=string_build.substring(0,lastindex);
-               string_build+="*";
+               string_build+="* ";
                displaypanel.setText(string_build);
            }
            operator=true;
