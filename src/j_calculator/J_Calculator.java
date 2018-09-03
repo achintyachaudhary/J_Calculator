@@ -209,17 +209,85 @@ public class J_Calculator implements ActionListener {
            operator=true;
        }
        else if(event.getSource().equals(equal)){
-           
+           string_build=result(string_build);
+           displaypanel.setText(string_build);
+           operator=false;
        }
        else if(event.getSource().equals(back)){
            int length=string_build.length()-1;
-           if(string_build.charAt(length)==' '){
+           if(length==-1){
+               
+           }
+           else if(string_build.charAt(length)==' '){
                string_build=string_build.substring(0,length-2);
-           }else{
+               operator=false;
+           }else {
                string_build=string_build.substring(0,length);
            }
            displaypanel.setText(string_build);
        }
+    }
+    private String result(String string_build){
+        int size=string_build.length();
+        int array[]=new int[4];
+        for(int i=0;i<size;i++){
+            if(string_build.charAt(i)=='/')
+                array[0]++;
+            if(string_build.charAt(i)=='*')
+                array[1]++;
+            if(string_build.charAt(i)=='+')
+                array[2]++;
+            if(string_build.charAt(i)=='-')
+                array[3]++;
+        }
+        int first=0,second=0;
+        String first_half="",second_half="";
+        for(int k=0;k<array[0];k++){
+                for(int i=0;i<string_build.length();i++){
+                        if(string_build.charAt(i)=='/'){
+                                int iter=i+2;
+                                while(iter <size && string_build.charAt(iter)!=' '){
+                                        second=second*10+string_build.charAt(iter)-'0';
+                                        iter++;
+                                }
+                        second_half=string_build.substring(iter);
+                        iter=i-2;
+                        while(iter >=0 && string_build.charAt(iter)!=' '){
+                                first=first*10+string_build.charAt(iter)-'0';
+                                iter--;
+                        }
+                        first_half=string_build.substring(0,iter+1);
+                        int temp=0;
+                        while(first!=0){
+                                temp=temp*10+first%10;
+                                first/=10;
+                        }
+                        first=temp;                   
+                        string_build=first_half;
+                        double temp_cal=first/second;
+                        String mid=Double.toString(temp_cal);
+                        string_build+=mid;
+                        string_build+=second_half;
+                        break;
+                        }
+                }   
+        }
+           for(int i=0;i<array[1];i++){
+               if(string_build.charAt(i)=='*'){
+                   
+               }
+           }
+           for(int i=0;i<array[2];i++){
+               if(string_build.charAt(i)=='+'){
+                   
+               }
+           }
+           for(int i=0;i<array[3];i++){
+               if(string_build.charAt(i)=='-'){
+                   
+               }
+           }
+        return string_build;
     }
     public static void main(String[] args) {
         new J_Calculator();
