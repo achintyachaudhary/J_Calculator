@@ -212,7 +212,13 @@ public class J_Calculator implements ActionListener {
            
        }
        else if(event.getSource().equals(back)){
-           
+           int length=string_build.length()-1;
+           if(string_build.charAt(length)==' '){
+               string_build=string_build.substring(0,length-2);
+           }else{
+               string_build=string_build.substring(0,length);
+           }
+           displaypanel.setText(string_build);
        }
     }
     public static void main(String[] args) {
