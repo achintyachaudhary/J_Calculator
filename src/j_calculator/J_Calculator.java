@@ -264,8 +264,8 @@ public class J_Calculator implements ActionListener {
                         }
                         first=temp;                   
                         string_build=first_half;
-                        double temp_cal=first/second;
-                        String mid=Double.toString(temp_cal);
+                        int temp_cal=first/second;
+                        String mid=Integer.toString(temp_cal);
                         string_build+=mid;
                         string_build+=second_half;
                         break;
