@@ -246,28 +246,29 @@ public class J_Calculator implements ActionListener {
                 for(int i=0;i<string_build.length();i++){
                         if(string_build.charAt(i)=='/'){
                                 int iter=i+2;
-                                while(iter <size && string_build.charAt(iter)!=' '){
+                                while(iter <string_build.length() && string_build.charAt(iter)!=' '){
                                         second=second*10+string_build.charAt(iter)-'0';
                                         iter++;
                                 }
-                        second_half=string_build.substring(iter);
+                        second_half=string_build.substring(iter);   // it include space at front
                         iter=i-2;
                         while(iter >=0 && string_build.charAt(iter)!=' '){
                                 first=first*10+string_build.charAt(iter)-'0';
                                 iter--;
                         }
-                        first_half=string_build.substring(0,iter+1);
+                        first_half=string_build.substring(0,iter+1);    // include space at end
                         int temp=0;
-                        while(first!=0){
-                                temp=temp*10+first%10;
-                                first/=10;
-                        }
-                        first=temp;                   
+                                while(first!=0){
+                                        temp=temp*10+first%10;
+                                        first/=10;
+                                }
+                                first=temp;                   
                         string_build=first_half;
                         int temp_cal=first/second;
                         String mid=Integer.toString(temp_cal);
                         string_build+=mid;
                         string_build+=second_half;
+                        second=0;first=0;
                         break;
                         }
                 }   
