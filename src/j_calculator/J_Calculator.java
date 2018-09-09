@@ -258,14 +258,11 @@ public class J_Calculator implements ActionListener {
                                 iter--;
                         }
                         StringBuilder sb=new StringBuilder(changeme);
-                        sb=sb.reverse();
+                        changeme=sb.reverse().toString();
                         first_half=string_build.substring(0,iter+1);    // include space at end
-                        int temp=0;
-                                while(first!=0){
-                                        temp=temp*10+first%10;
-                                        first/=10;
-                                }
-                                first=temp;                   
+                        for(int iterr=0;iterr<changeme.length();iterr++){
+                            first=first*10+changeme.charAt(iterr)-'0';
+                        }
                         string_build=first_half;
                         int temp_cal=first/second;
                         String mid=Integer.toString(temp_cal);
@@ -287,17 +284,17 @@ public class J_Calculator implements ActionListener {
                                 }
                         second_half=string_build.substring(iter);   // it include space at front
                         iter=i-2;
+                        String changeme="";
                         while(iter >=0 && string_build.charAt(iter)!=' '){
-                                first=first*10+string_build.charAt(iter)-'0';
+                                changeme=changeme+string_build.charAt(iter);
                                 iter--;
                         }
+                        StringBuilder sb=new StringBuilder(changeme);
+                        changeme=sb.reverse().toString();
                         first_half=string_build.substring(0,iter+1);    // include space at end
-                        int temp=0;
-                                while(first!=0){
-                                        temp=temp*10+first%10;
-                                        first/=10;
-                                }
-                                first=temp;                   
+                        for(int iterr=0;iterr<changeme.length();iterr++){
+                            first=first*10+changeme.charAt(iterr)-'0';
+                        }
                         string_build=first_half;
                         int temp_cal=first*second;
                         String mid=Integer.toString(temp_cal);
@@ -319,17 +316,18 @@ public class J_Calculator implements ActionListener {
                                 }
                         second_half=string_build.substring(iter);   // it include space at front
                         iter=i-2;
+                        String changeme="";
                         while(iter >=0 && string_build.charAt(iter)!=' '){
-                                first=first*10+string_build.charAt(iter)-'0';
+                                changeme=changeme+string_build.charAt(iter);
                                 iter--;
                         }
+                        StringBuilder sb=new StringBuilder(changeme);
+                        changeme=sb.reverse().toString();
                         first_half=string_build.substring(0,iter+1);    // include space at end
-                        int temp=0;
-                                while(first!=0){
-                                        temp=temp*10+first%10;
-                                        first/=10;
-                                }
-                                first=temp;                   
+                        for(int iterr=0;iterr<changeme.length();iterr++){
+                            first=first*10+changeme.charAt(iterr)-'0';
+                        }
+                        
                         string_build=first_half;
                         int temp_cal=first+second;
                         String mid=Integer.toString(temp_cal);
@@ -351,17 +349,17 @@ public class J_Calculator implements ActionListener {
                                 }
                         second_half=string_build.substring(iter);   // it include space at front
                         iter=i-2;
+                        String changeme="";
                         while(iter >=0 && string_build.charAt(iter)!=' '){
-                                first=first*10+string_build.charAt(iter)-'0';
+                                changeme=changeme+string_build.charAt(iter);
                                 iter--;
                         }
+                        StringBuilder sb=new StringBuilder(changeme);
+                        changeme=sb.reverse().toString();
                         first_half=string_build.substring(0,iter+1);    // include space at end
-                        int temp=0;
-                                while(first!=0){
-                                        temp=temp*10+first%10;
-                                        first/=10;
-                                }
-                                first=temp;                   
+                        for(int iterr=0;iterr<changeme.length();iterr++){
+                            first=first*10+changeme.charAt(iterr)-'0';
+                        }
                         string_build=first_half;
                         int temp_cal=first-second;
                         String mid=Integer.toString(temp_cal);
