@@ -70,7 +70,7 @@ public class J_Calculator implements ActionListener {
         zero.setFont(new Font("Arial", Font.PLAIN, 40));
         zero.addActionListener(this);
         displaypanel.setPreferredSize(new Dimension(475,50 ));
-        displaypanel.setText("Arc Calculator ");
+        displaypanel.setText("Version 1.0.6");
         displaypanel.setSize(60, 60);
         displaypanel.setFont(new Font("Serif", Font.PLAIN, 44));
         plus.setPreferredSize(new Dimension(75,75 ));
@@ -252,10 +252,13 @@ public class J_Calculator implements ActionListener {
                                 }
                         second_half=string_build.substring(iter);   // it include space at front
                         iter=i-2;
+                        String changeme="";
                         while(iter >=0 && string_build.charAt(iter)!=' '){
-                                first=first*10+string_build.charAt(iter)-'0';
+                                changeme=changeme+string_build.charAt(iter);
                                 iter--;
                         }
+                        StringBuilder sb=new StringBuilder(changeme);
+                        sb=sb.reverse();
                         first_half=string_build.substring(0,iter+1);    // include space at end
                         int temp=0;
                                 while(first!=0){
