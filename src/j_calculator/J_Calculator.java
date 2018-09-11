@@ -7,7 +7,6 @@ import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JFrame;
-import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 
@@ -28,6 +27,7 @@ public class J_Calculator implements ActionListener {
     private static JButton multiply = new JButton("*");
     private static JButton divide = new JButton("/");
     private static JButton equal = new JButton("=");
+    private static JButton dot = new JButton(".");
     private static JLabel displaypanel= new JLabel("");
     
     public J_Calculator(){
@@ -85,6 +85,9 @@ public class J_Calculator implements ActionListener {
         divide.setPreferredSize(new Dimension(75,75 ));
         divide.setFont(new Font("Arial", Font.PLAIN, 40));
         divide.addActionListener(this);
+        dot.setPreferredSize(new Dimension(75,75 ));
+        dot.setFont(new Font("Arial", Font.PLAIN, 40));
+        dot.addActionListener(this);
         equal.setPreferredSize(new Dimension(75,75 ));
         equal.setFont(new Font("Arial", Font.PLAIN, 40));
         equal.addActionListener(this);
@@ -104,16 +107,25 @@ public class J_Calculator implements ActionListener {
         frame.add(multiply);
         frame.add(divide);
         frame.add(back);
+        frame.add(dot);
         frame.add(equal);
     }
     private String string_build="";
     static boolean operator=false;
+    static boolean dot_operator=true;
     @Override 
     public void actionPerformed(ActionEvent event){
        if(event.getSource().equals(one)){
            string_build+="1";
            displaypanel.setText(string_build);
            operator=false;
+       }
+       else if(event.getSource().equals(dot)){
+           if(dot_operator ){
+                string_build+=".";
+                displaypanel.setText(string_build);
+                dot_operator=false;
+           }
        }
        else if(event.getSource().equals(two)){
            string_build+="2";
@@ -171,6 +183,7 @@ public class J_Calculator implements ActionListener {
                displaypanel.setText(string_build);
            }
            operator=true;
+           dot_operator=true;
        }
        else if(event.getSource().equals(minus)){
            if(!operator){
@@ -183,6 +196,7 @@ public class J_Calculator implements ActionListener {
                displaypanel.setText(string_build);
            }
            operator=true;
+           dot_operator=true;
        }
        else if(event.getSource().equals(divide)){
            if(!operator){
@@ -195,6 +209,7 @@ public class J_Calculator implements ActionListener {
                displaypanel.setText(string_build);
            }
            operator=true;
+           dot_operator=true;
        }
        else if(event.getSource().equals(multiply)){
            if(!operator){
@@ -207,6 +222,7 @@ public class J_Calculator implements ActionListener {
                displaypanel.setText(string_build);
            }
            operator=true;
+           dot_operator=true;
        }
        else if(event.getSource().equals(equal)){
            string_build=result(string_build);
