@@ -35,7 +35,7 @@ public class J_Calculator implements ActionListener {
     
     public J_Calculator(){
         JPanel  paneltop=new JPanel(new FlowLayout());
-        JPanel  panelleftover=new JPanel(new GridBagLayout());
+        JPanel  panelleftover=new JPanel(new GridLayout(5,3));
         JFrame frame=new JFrame();
         frame.setVisible(true);
         frame.setBounds(470,130, 500, 500);
@@ -270,8 +270,20 @@ public class J_Calculator implements ActionListener {
            dot_operator=true;
        }
        else if(event.getSource().equals(equal)){
-           string_build=result(string_build);
-           displaypanel.setText(string_build);
+                int flaging=0;
+                try{
+                        string_build=result(string_build);
+                }catch(NumberFormatException nfe){
+                        System.out.println("error found");
+                        string_build="Bad Expression";
+                        displaypanel.setText(string_build);
+                        string_build="";
+                        flaging=1;
+                        }
+                if(flaging!=1){
+                        displaypanel.setText(string_build);
+                }
+           
            clear=true;
            operator=false;
        }
