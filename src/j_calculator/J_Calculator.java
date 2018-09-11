@@ -243,6 +243,8 @@ public class J_Calculator implements ActionListener {
            displaypanel.setText(string_build);
        }
     }
+    // This is logical portion of the calculator
+    
     private String result(String string_build){
         int size=string_build.length();
         int array[]=new int[4];
@@ -256,17 +258,21 @@ public class J_Calculator implements ActionListener {
             if(string_build.charAt(i)=='-')
                 array[3]++;
         }
-        int first=0,second=0;
+        double first=0,second=0;
         String first_half="",second_half="";
         for(int k=0;k<array[0];k++){
                 for(int i=0;i<string_build.length();i++){
                         if(string_build.charAt(i)=='/'){
                                 int iter=i+2;
+                                String loc="";
                                 while(iter <string_build.length() && string_build.charAt(iter)!=' '){
-                                        second=second*10+string_build.charAt(iter)-'0';
+                                        loc+=string_build.charAt(iter);
                                         iter++;
                                 }
                         second_half=string_build.substring(iter);   // it include space at front
+                        second=Double.parseDouble(loc);
+                        //------------------------------------------------------------//
+                        //parsing first input for operation
                         iter=i-2;
                         String changeme="";
                         while(iter >=0 && string_build.charAt(iter)!=' '){
@@ -275,13 +281,11 @@ public class J_Calculator implements ActionListener {
                         }
                         StringBuilder sb=new StringBuilder(changeme);
                         changeme=sb.reverse().toString();
+                        first=Double.parseDouble(changeme);
                         first_half=string_build.substring(0,iter+1);    // include space at end
-                        for(int iterr=0;iterr<changeme.length();iterr++){
-                            first=first*10+changeme.charAt(iterr)-'0';
-                        }
                         string_build=first_half;
-                        int temp_cal=first/second;
-                        String mid=Integer.toString(temp_cal);
+                        double temp_cal=first/second;
+                        String mid=Double.toString(temp_cal);
                         string_build+=mid;
                         string_build+=second_half;
                         second=0;first=0;
@@ -293,12 +297,16 @@ public class J_Calculator implements ActionListener {
         for(int k=0;k<array[1];k++){
                 for(int i=0;i<string_build.length();i++){
                         if(string_build.charAt(i)=='*'){
-                                int iter=i+2;
+                               int iter=i+2;
+                                String loc="";
                                 while(iter <string_build.length() && string_build.charAt(iter)!=' '){
-                                        second=second*10+string_build.charAt(iter)-'0';
+                                        loc+=string_build.charAt(iter);
                                         iter++;
                                 }
                         second_half=string_build.substring(iter);   // it include space at front
+                        second=Double.parseDouble(loc);
+                        //------------------------------------------------------------//
+                        //parsing first input for operation
                         iter=i-2;
                         String changeme="";
                         while(iter >=0 && string_build.charAt(iter)!=' '){
@@ -307,13 +315,11 @@ public class J_Calculator implements ActionListener {
                         }
                         StringBuilder sb=new StringBuilder(changeme);
                         changeme=sb.reverse().toString();
+                        first=Double.parseDouble(changeme);
                         first_half=string_build.substring(0,iter+1);    // include space at end
-                        for(int iterr=0;iterr<changeme.length();iterr++){
-                            first=first*10+changeme.charAt(iterr)-'0';
-                        }
                         string_build=first_half;
-                        int temp_cal=first*second;
-                        String mid=Integer.toString(temp_cal);
+                        double temp_cal=first*second;
+                        String mid=Double.toString(temp_cal);
                         string_build+=mid;
                         string_build+=second_half;
                         second=0;first=0;
@@ -326,11 +332,15 @@ public class J_Calculator implements ActionListener {
                 for(int i=0;i<string_build.length();i++){
                         if(string_build.charAt(i)=='+'){
                                 int iter=i+2;
+                                String loc="";
                                 while(iter <string_build.length() && string_build.charAt(iter)!=' '){
-                                        second=second*10+string_build.charAt(iter)-'0';
+                                        loc+=string_build.charAt(iter);
                                         iter++;
                                 }
                         second_half=string_build.substring(iter);   // it include space at front
+                        second=Double.parseDouble(loc);
+                        //------------------------------------------------------------//
+                        //parsing first input for operation
                         iter=i-2;
                         String changeme="";
                         while(iter >=0 && string_build.charAt(iter)!=' '){
@@ -339,14 +349,11 @@ public class J_Calculator implements ActionListener {
                         }
                         StringBuilder sb=new StringBuilder(changeme);
                         changeme=sb.reverse().toString();
+                        first=Double.parseDouble(changeme);
                         first_half=string_build.substring(0,iter+1);    // include space at end
-                        for(int iterr=0;iterr<changeme.length();iterr++){
-                            first=first*10+changeme.charAt(iterr)-'0';
-                        }
-                        
                         string_build=first_half;
-                        int temp_cal=first+second;
-                        String mid=Integer.toString(temp_cal);
+                        double temp_cal=first+second;
+                        String mid=Double.toString(temp_cal);
                         string_build+=mid;
                         string_build+=second_half;
                         second=0;first=0;
@@ -359,11 +366,15 @@ public class J_Calculator implements ActionListener {
                 for(int i=0;i<string_build.length();i++){
                         if(string_build.charAt(i)=='-'){
                                 int iter=i+2;
+                                String loc="";
                                 while(iter <string_build.length() && string_build.charAt(iter)!=' '){
-                                        second=second*10+string_build.charAt(iter)-'0';
+                                        loc+=string_build.charAt(iter);
                                         iter++;
                                 }
                         second_half=string_build.substring(iter);   // it include space at front
+                        second=Double.parseDouble(loc);
+                        //------------------------------------------------------------//
+                        //parsing first input for operation
                         iter=i-2;
                         String changeme="";
                         while(iter >=0 && string_build.charAt(iter)!=' '){
@@ -372,13 +383,11 @@ public class J_Calculator implements ActionListener {
                         }
                         StringBuilder sb=new StringBuilder(changeme);
                         changeme=sb.reverse().toString();
+                        first=Double.parseDouble(changeme);
                         first_half=string_build.substring(0,iter+1);    // include space at end
-                        for(int iterr=0;iterr<changeme.length();iterr++){
-                            first=first*10+changeme.charAt(iterr)-'0';
-                        }
                         string_build=first_half;
-                        int temp_cal=first-second;
-                        String mid=Integer.toString(temp_cal);
+                        double temp_cal=first-second;
+                        String mid=Double.toString(temp_cal);
                         string_build+=mid;
                         string_build+=second_half;
                         second=0;first=0;
