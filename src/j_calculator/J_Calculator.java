@@ -4,11 +4,14 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
+import java.awt.GridBagLayout;
+import java.awt.GridLayout;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JFrame;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 
 public class J_Calculator implements ActionListener {
     private static JButton one = new JButton("1");
@@ -31,6 +34,8 @@ public class J_Calculator implements ActionListener {
     private static JLabel displaypanel= new JLabel("");
     
     public J_Calculator(){
+        JPanel  paneltop=new JPanel(new FlowLayout());
+        JPanel  panelleftover=new JPanel(new GridBagLayout());
         JFrame frame=new JFrame();
         frame.setVisible(true);
         frame.setBounds(470,130, 500, 500);
@@ -39,82 +44,111 @@ public class J_Calculator implements ActionListener {
         one.setPreferredSize(new Dimension(75,75 ));
         one.setFont(new Font("Arial", Font.PLAIN, 40));
         one.addActionListener(this);
+        one.setBackground(Color.GRAY);
         back.setPreferredSize(new Dimension(75,75 ));
         back.setFont(new Font("Arial", Font.PLAIN, 40));
         back.addActionListener(this);
+        back.setBackground(Color.ORANGE);
+        plus.setBackground(Color.ORANGE);
         two.setPreferredSize(new Dimension(75,75 ));
         two.setFont(new Font("Arial", Font.PLAIN, 40));
         two.addActionListener(this);
+        two.setBackground(Color.GRAY);
         three.setPreferredSize(new Dimension(75,75 ));
         three.setFont(new Font("Arial", Font.PLAIN, 40));
         three.addActionListener(this);
+        three.setBackground(Color.GRAY);
         four.setPreferredSize(new Dimension(75,75 ));
         four.setFont(new Font("Arial", Font.PLAIN, 40));
         four.addActionListener(this);
+        four.setBackground(Color.GRAY);
         five.setPreferredSize(new Dimension(75,75 ));
         five.setFont(new Font("Arial", Font.PLAIN, 40));
         five.addActionListener(this);
+        five.setBackground(Color.GRAY);
         six.setPreferredSize(new Dimension(75,75 ));
         six.setFont(new Font("Arial", Font.PLAIN, 40));
         six.addActionListener(this);
+        six.setBackground(Color.GRAY);
         seven.setPreferredSize(new Dimension(75,75 ));
         seven.setFont(new Font("Arial", Font.PLAIN, 40));
         seven.addActionListener(this);
+        seven.setBackground(Color.GRAY);
         eight.setPreferredSize(new Dimension(75,75 ));
         eight.setFont(new Font("Arial", Font.PLAIN, 40));
         eight.addActionListener(this);
+        eight.setBackground(Color.GRAY);
         nine.setPreferredSize(new Dimension(75,75 ));
         nine.setFont(new Font("Arial", Font.PLAIN, 40));
         nine.addActionListener(this);
+        nine.setBackground(Color.GRAY);
         zero.setPreferredSize(new Dimension(75,75 ));
         zero.setFont(new Font("Arial", Font.PLAIN, 40));
         zero.addActionListener(this);
+        zero.setBackground(Color.GRAY);
         displaypanel.setPreferredSize(new Dimension(475,50 ));
         displaypanel.setText("Version 1.0.6");
         displaypanel.setSize(60, 60);
         displaypanel.setFont(new Font("Serif", Font.PLAIN, 44));
         plus.setPreferredSize(new Dimension(75,75 ));
+        plus.setBackground(Color.ORANGE);
         plus.setFont(new Font("Arial", Font.PLAIN, 40));
         plus.addActionListener(this);
+        minus.setBackground(Color.ORANGE);
         minus.setPreferredSize(new Dimension(75,75 ));
         minus.setFont(new Font("Arial", Font.PLAIN, 40));
         minus.addActionListener(this);
         multiply.setPreferredSize(new Dimension(75,75 ));
+        multiply.setBackground(Color.ORANGE);
         multiply.setFont(new Font("Arial", Font.PLAIN, 40));
         multiply.addActionListener(this);
         divide.setPreferredSize(new Dimension(75,75 ));
         divide.setFont(new Font("Arial", Font.PLAIN, 40));
         divide.addActionListener(this);
+        divide.setBackground(Color.ORANGE);
         dot.setPreferredSize(new Dimension(75,75 ));
         dot.setFont(new Font("Arial", Font.PLAIN, 40));
         dot.addActionListener(this);
+        dot.setBackground(Color.GRAY);
         equal.setPreferredSize(new Dimension(75,75 ));
         equal.setFont(new Font("Arial", Font.PLAIN, 40));
         equal.addActionListener(this);
-        frame.add(displaypanel);
-        frame.add(one);
-        frame.add(two);
-        frame.add(three);
-        frame.add(four);
-        frame.add(five);
-        frame.add(six);
-        frame.add(seven);
-        frame.add(eight);
-        frame.add(nine);
-        frame.add(zero);
-        frame.add(plus);
-        frame.add(minus);
-        frame.add(multiply);
-        frame.add(divide);
-        frame.add(back);
-        frame.add(dot);
-        frame.add(equal);
+        equal.setBackground(Color.GRAY);
+        paneltop.add(displaypanel);        
+        panelleftover.add(one);
+        panelleftover.add(two);
+        panelleftover.add(three);
+        panelleftover.add(four);
+        panelleftover.add(five);
+        panelleftover.add(six);
+        panelleftover.add(seven);
+        panelleftover.add(eight);
+        panelleftover.add(nine);
+        panelleftover.add(zero);
+        panelleftover.add(plus);
+        panelleftover.add(minus);
+        panelleftover.add(multiply);
+        panelleftover.add(divide);
+        panelleftover.add(back);
+        panelleftover.add(dot);
+        panelleftover.add(equal);
+        frame.add(paneltop);
+        frame.add(panelleftover);
     }
     private String string_build="";
     static boolean operator=false;
     static boolean dot_operator=true;
+    static boolean clear=false;
     @Override 
     public void actionPerformed(ActionEvent event){
+        if(clear==true ){
+                if( !event.getSource().equals(plus) && !event.getSource().equals(minus) && !event.getSource().equals(divide)
+                                && !event.getSource().equals(multiply) ){
+                    string_build="";
+                }
+                clear=false;
+        }
+        
        if(event.getSource().equals(one)){
            string_build+="1";
            displaypanel.setText(string_build);
@@ -173,8 +207,13 @@ public class J_Calculator implements ActionListener {
            operator=false;
        }
        else if(event.getSource().equals(plus)){
-           if(!operator){
-               string_build+=" + ";
+           System.out.println(string_build.length());
+                if(!operator){
+                        if(string_build.length()!=0){
+                                string_build+=" + ";
+                                System.out.print("11");
+                                operator=true;
+                        }
                displaypanel.setText(string_build);
            }else{
                int lastindex=string_build.length()-2;
@@ -182,51 +221,58 @@ public class J_Calculator implements ActionListener {
                string_build+="+ ";
                displaypanel.setText(string_build);
            }
-           operator=true;
            dot_operator=true;
        }
        else if(event.getSource().equals(minus)){
-           if(!operator){
-               string_build+=" - ";
-               displaypanel.setText(string_build);
+                if(!operator){
+                        if(string_build.length()!=0){
+                                string_build+=" - ";
+                                operator=true;
+                        }
+                        displaypanel.setText(string_build);
            }else{
                int lastindex=string_build.length()-2;
                string_build=string_build.substring(0,lastindex);
                string_build+="- ";
                displaypanel.setText(string_build);
            }
-           operator=true;
+           
            dot_operator=true;
        }
        else if(event.getSource().equals(divide)){
            if(!operator){
-               string_build+=" / ";
-               displaypanel.setText(string_build);
+                        if(string_build.length()!=0){
+                                string_build+=" / ";
+                                operator=true;
+                        }
+                        displaypanel.setText(string_build);
            }else{
                int lastindex=string_build.length()-2;
                string_build=string_build.substring(0,lastindex);
                string_build+="/ ";
                displaypanel.setText(string_build);
            }
-           operator=true;
            dot_operator=true;
        }
        else if(event.getSource().equals(multiply)){
            if(!operator){
-               string_build+=" * ";
-               displaypanel.setText(string_build);
+                        if(string_build.length()!=0){
+                                string_build+=" * ";
+                                operator=true;
+                        }
+                        displaypanel.setText(string_build);
            }else{
                int lastindex=string_build.length()-2;
                string_build=string_build.substring(0,lastindex);
                string_build+="* ";
                displaypanel.setText(string_build);
            }
-           operator=true;
            dot_operator=true;
        }
        else if(event.getSource().equals(equal)){
            string_build=result(string_build);
            displaypanel.setText(string_build);
+           clear=true;
            operator=false;
        }
        else if(event.getSource().equals(back)){
@@ -349,7 +395,37 @@ public class J_Calculator implements ActionListener {
                         first_half=string_build.substring(0,iter+1);    // include space at end
                         string_build=first_half;
                         double temp_cal=first*second;
-                        String mid=Double.toString(temp_cal);
+                        
+                        // Checking for dot to make it perfect integer
+                        Double d=new Double(temp_cal);
+                        String checkdot=d.toString();
+                        String IsItPerfectNo = "";
+                        int flag=0;
+                        for(int i280=0 ; i280<checkdot.length() ; i280++){
+                                if(checkdot.charAt(i280)=='.'){
+                                        for(int i_five=i280+1;i_five<checkdot.length();i_five++){
+                                                if(checkdot.charAt(i_five)=='0'){
+                                                        flag=1;
+                                                }else{
+                                                        flag=0;
+                                                        break;
+                                                }
+                                        }
+                                        break;
+                                }
+                                else{
+                                        IsItPerfectNo+=checkdot.charAt(i280);
+                                }
+                                        
+                        }
+                        String mid="";
+                        if(flag==1){
+                                mid=IsItPerfectNo;
+                                }
+                        else{
+                                 mid=Double.toString(temp_cal);
+                        }
+                        // work done now either we have perfect no. or float value
                         string_build+=mid;
                         string_build+=second_half;
                         second=0;first=0;
@@ -383,7 +459,36 @@ public class J_Calculator implements ActionListener {
                         first_half=string_build.substring(0,iter+1);    // include space at end
                         string_build=first_half;
                         double temp_cal=first+second;
-                        String mid=Double.toString(temp_cal);
+                       // Checking for dot to make it perfect integer
+                        Double d=new Double(temp_cal);
+                        String checkdot=d.toString();
+                        String IsItPerfectNo = "";
+                        int flag=0;
+                        for(int i280=0 ; i280<checkdot.length() ; i280++){
+                                if(checkdot.charAt(i280)=='.'){
+                                        for(int i_five=i280+1;i_five<checkdot.length();i_five++){
+                                                if(checkdot.charAt(i_five)=='0'){
+                                                        flag=1;
+                                                }else{
+                                                        flag=0;
+                                                        break;
+                                                }
+                                        }
+                                        break;
+                                }
+                                else{
+                                        IsItPerfectNo+=checkdot.charAt(i280);
+                                }
+                                        
+                        }
+                        String mid="";
+                        if(flag==1){
+                                mid=IsItPerfectNo;
+                                }
+                        else{
+                                 mid=Double.toString(temp_cal);
+                        }
+                        // work done now either we have perfect no. or float value
                         string_build+=mid;
                         string_build+=second_half;
                         second=0;first=0;
@@ -417,7 +522,36 @@ public class J_Calculator implements ActionListener {
                         first_half=string_build.substring(0,iter+1);    // include space at end
                         string_build=first_half;
                         double temp_cal=first-second;
-                        String mid=Double.toString(temp_cal);
+                       // Checking for dot to make it perfect integer
+                        Double d=new Double(temp_cal);
+                        String checkdot=d.toString();
+                        String IsItPerfectNo = "";
+                        int flag=0;
+                        for(int i280=0 ; i280<checkdot.length() ; i280++){
+                                if(checkdot.charAt(i280)=='.'){
+                                        for(int i_five=i280+1;i_five<checkdot.length();i_five++){
+                                                if(checkdot.charAt(i_five)=='0'){
+                                                        flag=1;
+                                                }else{
+                                                        flag=0;
+                                                        break;
+                                                }
+                                        }
+                                        break;
+                                }
+                                else{
+                                        IsItPerfectNo+=checkdot.charAt(i280);
+                                }
+                                        
+                        }
+                        String mid="";
+                        if(flag==1){
+                                mid=IsItPerfectNo;
+                                }
+                        else{
+                                 mid=Double.toString(temp_cal);
+                        }
+                        // work done now either we have perfect no. or float value
                         string_build+=mid;
                         string_build+=second_half;
                         second=0;first=0;
