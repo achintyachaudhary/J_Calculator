@@ -249,14 +249,14 @@ public class J_Calculator implements ActionListener {
         int size=string_build.length();
         int array[]=new int[4];
         for(int i=0;i<size;i++){
-            if(string_build.charAt(i)=='/')
-                array[0]++;
-            if(string_build.charAt(i)=='*')
-                array[1]++;
-            if(string_build.charAt(i)=='+')
-                array[2]++;
-            if(string_build.charAt(i)=='-')
-                array[3]++;
+                if(string_build.charAt(i)=='/')
+                        array[0]++;
+                if(string_build.charAt(i)=='*')
+                        array[1]++;
+                if(string_build.charAt(i)=='+')
+                        array[2]++;
+                if(string_build.charAt(i)=='-')
+                        array[3]++;
         }
         double first=0,second=0;
         String first_half="",second_half="";
@@ -283,9 +283,39 @@ public class J_Calculator implements ActionListener {
                         changeme=sb.reverse().toString();
                         first=Double.parseDouble(changeme);
                         first_half=string_build.substring(0,iter+1);    // include space at end
-                        string_build=first_half;
+                        string_build=first_half;        // first half addition for display panel
                         double temp_cal=first/second;
-                        String mid=Double.toString(temp_cal);
+                        
+                        // Checking for dot to make it perfect integer
+                        Double d=new Double(temp_cal);
+                        String checkdot=d.toString();
+                        String IsItPerfectNo = "";
+                        int flag=0;
+                        for(int i280=0 ; i280<checkdot.length() ; i280++){
+                                if(checkdot.charAt(i280)=='.'){
+                                        for(int i_five=i280+1;i_five<checkdot.length();i_five++){
+                                                if(checkdot.charAt(i_five)=='0'){
+                                                        flag=1;
+                                                }else{
+                                                        flag=0;
+                                                        break;
+                                                }
+                                        }
+                                        break;
+                                }
+                                else{
+                                        IsItPerfectNo+=checkdot.charAt(i280);
+                                }
+                                        
+                        }
+                        String mid="";
+                        if(flag==1){
+                                mid=IsItPerfectNo;
+                                }
+                        else{
+                                 mid=Double.toString(temp_cal);
+                        }
+                        // work done now either we have perfect no. or float value
                         string_build+=mid;
                         string_build+=second_half;
                         second=0;first=0;
@@ -398,6 +428,7 @@ public class J_Calculator implements ActionListener {
         return string_build;
     }
     public static void main(String[] args) {
-        new J_Calculator();
+        J_Calculator j_Calculator = new J_Calculator();  // no requirenment of object just required for initiating 
+                                                                        //frame and components
     }   
 }
