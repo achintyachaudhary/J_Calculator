@@ -214,12 +214,12 @@ public class J_Calculator implements ActionListener {
                                 System.out.print("11");
                                 operator=true;
                         }
-               displaypanel.setText(string_build);
-           }else{
-               int lastindex=string_build.length()-2;
-               string_build=string_build.substring(0,lastindex);
-               string_build+="+ ";
-               displaypanel.setText(string_build);
+                displaypanel.setText(string_build);
+                }else{
+                        int lastindex=string_build.length()-2;
+                        string_build=string_build.substring(0,lastindex);
+                        string_build+="+ ";
+                        displaypanel.setText(string_build);
            }
            dot_operator=true;
        }
@@ -288,18 +288,21 @@ public class J_Calculator implements ActionListener {
            operator=false;
        }
        else if(event.getSource().equals(back)){
-           int length=string_build.length()-1;
-           if(length==-1){
-               
-           }
-           else if(string_build.charAt(length)==' '){
-               string_build=string_build.substring(0,length-2);
-               operator=false;
-           }else {
-               string_build=string_build.substring(0,length);
-           }
-           displaypanel.setText(string_build);
-       }
+                int length=string_build.length()-1;
+                if(length==-1){
+                        // do nothing
+                }
+                else if(string_build.charAt(length)==' '){
+                        string_build=string_build.substring(0,length-2);
+                        operator=false;
+                }else if(string_build.charAt(length)=='.'){
+                        string_build=string_build.substring(0,length);
+                        dot_operator=true;
+                }else {
+                       string_build=string_build.substring(0,length);
+                }
+                displaypanel.setText(string_build);
+        }
     }
     // This is logical portion of the calculator
     
