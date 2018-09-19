@@ -149,65 +149,65 @@ public class J_Calculator implements ActionListener {
                 clear=false;
         }
         
-       if(event.getSource().equals(one)){
+        if(event.getSource().equals(one)){
            string_build+="1";
            displaypanel.setText(string_build);
            operator=false;
-       }
-       else if(event.getSource().equals(dot)){
-           if(dot_operator ){
-                string_build+=".";
+        }
+        else if(event.getSource().equals(dot)){
+                if(dot_operator ){
+                        string_build+=".";
+                        displaypanel.setText(string_build);
+                        dot_operator=false;
+                }
+        }
+        else if(event.getSource().equals(two)){
+                string_build+="2";
                 displaypanel.setText(string_build);
-                dot_operator=false;
-           }
-       }
-       else if(event.getSource().equals(two)){
-           string_build+="2";
-           displaypanel.setText(string_build);
-           operator=false;
-       }
-       else if(event.getSource().equals(three)){
-           string_build+="3";
-           displaypanel.setText(string_build);
-           operator=false;
-       }
-       else if(event.getSource().equals(four)){
-           string_build+="4";
-           displaypanel.setText(string_build);
-           operator=false;
-       }
-       else if(event.getSource().equals(five)){
-           string_build+="5";
-           displaypanel.setText(string_build);
-           operator=false;
-       }
-       else if(event.getSource().equals(six)){
-           string_build+="6";
-           displaypanel.setText(string_build);
-           operator=false;
-       }
-       else if(event.getSource().equals(seven)){
-           string_build+="7";
-           displaypanel.setText(string_build);
-           operator=false;
-       }
-       else if(event.getSource().equals(eight)){
-           string_build+="8";
-           displaypanel.setText(string_build);
-           operator=false;
-       }
-       else if(event.getSource().equals(nine)){
-           string_build+="9";
-           displaypanel.setText(string_build);
-           operator=false;
-       }
-       else if(event.getSource().equals(zero)){
-           string_build+="0";
-           displaypanel.setText(string_build);
-           operator=false;
-       }
-       else if(event.getSource().equals(plus)){
-           System.out.println(string_build.length());
+                operator=false;
+        }
+        else if(event.getSource().equals(three)){
+                string_build+="3";
+                displaypanel.setText(string_build);
+                operator=false;
+        }
+        else if(event.getSource().equals(four)){
+                string_build+="4";
+                displaypanel.setText(string_build);
+                operator=false;
+        }
+        else if(event.getSource().equals(five)){
+                string_build+="5";
+                displaypanel.setText(string_build);
+                operator=false;
+        }
+        else if(event.getSource().equals(six)){
+                string_build+="6";
+                displaypanel.setText(string_build);
+                operator=false;
+        }
+        else if(event.getSource().equals(seven)){
+                string_build+="7";
+                displaypanel.setText(string_build);
+                operator=false;
+        }
+        else if(event.getSource().equals(eight)){
+                string_build+="8";
+                displaypanel.setText(string_build);
+                operator=false;
+        }    
+        else if(event.getSource().equals(nine)){
+                string_build+="9";
+                displaypanel.setText(string_build);
+                operator=false;
+        }
+        else if(event.getSource().equals(zero)){
+                string_build+="0";
+                displaypanel.setText(string_build);
+                operator=false;
+        }
+        else if(event.getSource().equals(plus)){
+                System.out.println(string_build.length());
                 if(!operator){
                         if(string_build.length()!=0){
                                 string_build+=" + ";
@@ -220,56 +220,55 @@ public class J_Calculator implements ActionListener {
                         string_build=string_build.substring(0,lastindex);
                         string_build+="+ ";
                         displaypanel.setText(string_build);
-           }
-           dot_operator=true;
+                }
+                dot_operator=true;
        }
-       else if(event.getSource().equals(minus)){
+        else if(event.getSource().equals(minus)){
                 if(!operator){
                         if(string_build.length()!=0){
                                 string_build+=" - ";
                                 operator=true;
                         }
                         displaypanel.setText(string_build);
-           }else{
-               int lastindex=string_build.length()-2;
-               string_build=string_build.substring(0,lastindex);
-               string_build+="- ";
-               displaypanel.setText(string_build);
-           }
-           
-           dot_operator=true;
-       }
-       else if(event.getSource().equals(divide)){
-           if(!operator){
+                }else{
+                        int lastindex=string_build.length()-2;
+                        string_build=string_build.substring(0,lastindex);
+                        string_build+="- ";
+                        displaypanel.setText(string_build);
+                }           
+                dot_operator=true;
+        }
+        else if(event.getSource().equals(divide)){
+                if(!operator){
                         if(string_build.length()!=0){
                                 string_build+=" / ";
                                 operator=true;
                         }
                         displaypanel.setText(string_build);
-           }else{
-               int lastindex=string_build.length()-2;
-               string_build=string_build.substring(0,lastindex);
-               string_build+="/ ";
-               displaypanel.setText(string_build);
-           }
-           dot_operator=true;
-       }
-       else if(event.getSource().equals(multiply)){
-           if(!operator){
+                }else{
+                        int lastindex=string_build.length()-2;
+                        string_build=string_build.substring(0,lastindex);
+                        string_build+="/ ";
+                        displaypanel.setText(string_build);
+                }
+                dot_operator=true;
+        }
+        else if(event.getSource().equals(multiply)){
+                if(!operator){
                         if(string_build.length()!=0){
                                 string_build+=" * ";
                                 operator=true;
                         }
                         displaypanel.setText(string_build);
-           }else{
-               int lastindex=string_build.length()-2;
-               string_build=string_build.substring(0,lastindex);
-               string_build+="* ";
-               displaypanel.setText(string_build);
-           }
-           dot_operator=true;
-       }
-       else if(event.getSource().equals(equal)){
+                }else{
+                        int lastindex=string_build.length()-2;
+                        string_build=string_build.substring(0,lastindex);
+                        string_build+="* ";
+                        displaypanel.setText(string_build);
+                }
+                dot_operator=true;
+        }
+        else if(event.getSource().equals(equal)){
                 int flaging=0;
                 try{
                         string_build=result(string_build);
@@ -282,12 +281,11 @@ public class J_Calculator implements ActionListener {
                         }
                 if(flaging!=1){
                         displaypanel.setText(string_build);
-                }
-           
-           clear=true;
-           operator=false;
-       }
-       else if(event.getSource().equals(back)){
+                }           
+                clear=true;
+                operator=false;
+        }
+        else if(event.getSource().equals(back)){
                 int length=string_build.length()-1;
                 if(length==-1){
                         // do nothing
